@@ -1,0 +1,68 @@
+<!--This will interact with the microservice my partner has created and also interact with the database-->
+{% extends "base.html" %} 
+{% block title %}User Recipe Access{% endblock %} 
+{% block content%} 
+<h3 align="center">Recipes</h3>
+<ul class="list-group list-group-flush" id="recipes">
+      {% for i_recipe in recipe %}
+      <li class="list-group-item">
+        <td>Title: {{ i_recipe.name}}</td><br><td>Category:  {{ i_recipe.category}}</td><br><td>Ingredients:  {{ i_recipe.ingredients}}</td><br><td>Instructions:  {{ i_recipe.instructions}}</td><br><br>
+        <button type="button" class="close" onClick="">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </li>
+      {% endfor %}
+    </ul>
+<form method="POST">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="name" 
+        name="name"
+        placeholder="Enter Name"
+      />
+    </div>
+    <div class="form-group">
+      <label for="category">Category</label>
+      <input
+        type="text"
+        class="form-control"
+        id="category"
+        name="category"
+        placeholder="Enter category"
+      />
+    </div>
+    <div class="form-group">
+      <label for="ingredients">Ingredients</label>
+      <input
+        type="text"
+        class="form-control"
+        id="ingredients"
+        name="ingredients"
+        placeholder="Enter ingredients"
+      />
+    </div>
+    <div class="form-group">
+      <label for="instructions">Instructions</label>
+      <input
+        type="text"
+        class="form-control"
+        id="instructions"
+        name="instructions"
+        placeholder="Enter instructions..."
+      />
+    </div>
+    <br />
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+    <div>
+        {% for recipe in recipes %}
+            <h4>
+                {{recipe.name}}
+            </h4>
+        {% endfor %}
+
+    </div>
+{% endblock %}
